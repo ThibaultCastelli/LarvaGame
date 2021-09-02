@@ -57,33 +57,33 @@ public class Gun : MonoBehaviour
         _gunDirection = input.GetGunDirection();
 
         // Calculate aim angle and sprite flipping
-        if (sprite.flipY == false)
+        if (!sprite.flipY)
         {
             _aimAngle = _gunDirection == Vector2.zero ? -90 : (Mathf.Atan2(_gunDirection.y, _gunDirection.x) * Mathf.Rad2Deg) - 90;
-            if (sprite.flipX == false && _gunDirection.x == -1)
+            if (!sprite.flipX && _gunDirection.x == -1)
                 sprite.flipX = true;
-            else if (sprite.flipX == true && _gunDirection.x == 1)
+            else if (sprite.flipX && _gunDirection.x == 1)
                 sprite.flipX = false;
-            else if (sprite.flipX == true && _previousGunDir.x == -1 && _gunDirection.x == 0)
+            else if (sprite.flipX && _previousGunDir.x == -1 && _gunDirection.x == 0)
                 sprite.flipX = false;
         }
         else
         {
             _aimAngle = _gunDirection == Vector2.zero ? -90 : (Mathf.Atan2(_gunDirection.y, _gunDirection.x) * Mathf.Rad2Deg) + 90;
-            if (sprite.flipX == false && _gunDirection.x == 1)
+            if (!sprite.flipX && _gunDirection.x == 1)
                 sprite.flipX = true;
-            else if (sprite.flipX == true && _gunDirection.x == -1)
+            else if (sprite.flipX && _gunDirection.x == -1)
                 sprite.flipX = false;
-            else if (sprite.flipX == true && _previousGunDir.x == 1 && _gunDirection.x == 0)
+            else if (sprite.flipX && _previousGunDir.x == 1 && _gunDirection.x == 0)
                 sprite.flipX = false;
         }
 
         transform.rotation = Quaternion.AngleAxis(_aimAngle, Vector3.forward);
 
         // Change the offset of the gun when the player is against a wall to prevent shooting in a wall
-        if (player.IsAgainstWallLeft)
+        if (player.IsAgainstWallLeft && sprite.flipY)
             xOffset = -_defaultXOffset + 0.2f;
-        else if (player.IsAgainstWallRight)
+        else if (player.IsAgainstWallRight && !sprite.flipY)
             xOffset = _defaultXOffset - 0.2f;
         else
             xOffset = _previousXOffset;

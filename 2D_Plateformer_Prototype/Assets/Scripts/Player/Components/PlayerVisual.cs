@@ -21,12 +21,12 @@ public class PlayerVisual : MonoBehaviour
         _gunDirection = input.GetGunDirection();
         _movementDir = input.GetMovementX();
 
-        if (_movementDir < 0 && !sprite.flipX)
+        if (!sprite.flipX && (_movementDir < 0 && _gunDirection.x <= 0) || _gunDirection.x < -0.5f)
         {
             sprite.flipX = true;
             flipSpriteEvent.Raise(true);
         }
-        else if (_movementDir > 0 && sprite.flipX)
+        else if (sprite.flipX && (_movementDir > 0 && _gunDirection.x >= 0) || _gunDirection.x > 0.5f)
         {
             sprite.flipX = false;
             flipSpriteEvent.Raise(false);
