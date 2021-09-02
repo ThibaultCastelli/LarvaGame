@@ -14,23 +14,22 @@ public class PlayerVisual : MonoBehaviour
     public bool FlipX { get { return sprite.flipX; } }
 
     Vector2 _gunDirection;
+    float _movementDir;
 
     private void Update()
     {
         _gunDirection = input.GetGunDirection();
+        _movementDir = input.GetMovementX();
 
-        if (player.IsAgainstWallLeft)
-            flipSpriteEvent.Raise(false);
-        else if (player.IsAgainstWallRight)
-            flipSpriteEvent.Raise(true);
-        else
+        if (_movementDir < 0 && !sprite.flipX)
         {
-            if (_gunDirection.x < -0.5f && !sprite.flipX)
-                flipSpriteEvent.Raise(true);
-            else if (_gunDirection.x > 0.5f && sprite.flipX)
-                flipSpriteEvent.Raise(false);
+            sprite.flipX = true;
+            flipSpriteEvent.Raise(true);
+        }
+        else if (_movementDir > 0 && sprite.flipX)
+        {
+            sprite.flipX = false;
+            flipSpriteEvent.Raise(false);
         }
     }
-
-    public void FlipSprite(bool flip) => sprite.flipX = flip;
 }

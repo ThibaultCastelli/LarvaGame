@@ -211,17 +211,6 @@
                 },
                 {
                     "name": "",
-                    "id": "63e04ff0-4715-4943-b6e6-00aacefee7f6",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9fa927a1-50f5-4587-8ef7-390b414336df",
                     "path": "<Keyboard>/space",
                     "interactions": "",

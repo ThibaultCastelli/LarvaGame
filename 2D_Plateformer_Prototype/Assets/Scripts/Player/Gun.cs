@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     [SerializeField] [Range(0f, 2f)] float recoilAmount = 1f;
     [SerializeField] [Range(0.1f, 1f)] float followSpeed = 0.2f;
     [SerializeField] [Range(-1f, 1f)] float xOffset = 0.5f;
+    [SerializeField] [Range(-0.5f, 0.5f)] float yOffset = 0.06f;
     [SerializeField] [Range(1f, 20f)] float speedRecoil = 15f;
     [Space]
 
@@ -22,51 +23,85 @@ public class Gun : MonoBehaviour
     Vector2 _targetPos;
     Vector3 _recoilPos;
     Vector3 _defaultRecoilPos = new Vector3(-1, 0);
+    float _defaultXOffset;
+    float _previousXOffset;
 
     // Angle and recoil
     Vector2 _gunDirection;
+    Vector2 _previousGunDir;
     float _aimAngle;
     float _xRecoil;
     float _yRecoil;
-    float _nXOffset;
 
+    Player player;
     Color _defaultColor;
 
     bool _canFollowTarget = true;
     #endregion
 
     #region Starts & Updates
-    private void Start()
+    private void Awake()
     {
+        player = _target.GetComponent<Player>();
+        _defaultXOffset = xOffset;
         _defaultColor = sprite.color;
-        _nXOffset = -xOffset;
+        _previousXOffset = _defaultXOffset;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (!GameManager.isGamePaused)
+        if (GameManager.isGamePaused)
+            return;
+
+        // Gun rotate with the right stick
+        _gunDirection = input.GetGunDirection();
+
+        // Calculate aim angle and sprite flipping
+        if (sprite.flipY == false)
         {
-            // Gun rotate with the right stick
-            _gunDirection = input.GetGunDirection();
-
-            // Calculate aim angle
-            if (xOffset < 0 && _gunDirection.x == 0 && _gunDirection.y == 0)
-                _aimAngle = -270;
-            else
-                _aimAngle = (Mathf.Atan2(_gunDirection.y, _gunDirection.x) * Mathf.Rad2Deg) - 90;
-
-            transform.rotation = Quaternion.AngleAxis(_aimAngle, Vector3.forward);
-
-            // Gun following the player
-            _targetPos = new Vector2(_target.position.x + xOffset, _target.position.y);
-            if (_canFollowTarget)
-                transform.position = Vector2.Lerp(transform.position, _targetPos, followSpeed);
+            _aimAngle = _gunDirection == Vector2.zero ? -90 : (Mathf.Atan2(_gunDirection.y, _gunDirection.x) * Mathf.Rad2Deg) - 90;
+            if (sprite.flipX == false && _gunDirection.x == -1)
+                sprite.flipX = true;
+            else if (sprite.flipX == true && _gunDirection.x == 1)
+                sprite.flipX = false;
+            else if (sprite.flipX == true && _previousGunDir.x == -1 && _gunDirection.x == 0)
+                sprite.flipX = false;
         }
+        else
+        {
+            _aimAngle = _gunDirection == Vector2.zero ? -90 : (Mathf.Atan2(_gunDirection.y, _gunDirection.x) * Mathf.Rad2Deg) + 90;
+            if (sprite.flipX == false && _gunDirection.x == 1)
+                sprite.flipX = true;
+            else if (sprite.flipX == true && _gunDirection.x == -1)
+                sprite.flipX = false;
+            else if (sprite.flipX == true && _previousGunDir.x == 1 && _gunDirection.x == 0)
+                sprite.flipX = false;
+        }
+
+        transform.rotation = Quaternion.AngleAxis(_aimAngle, Vector3.forward);
+
+        // Change the offset of the gun when the player is against a wall to prevent shooting in a wall
+        if (player.IsAgainstWallLeft)
+            xOffset = -_defaultXOffset + 0.2f;
+        else if (player.IsAgainstWallRight)
+            xOffset = _defaultXOffset - 0.2f;
+        else
+            xOffset = _previousXOffset;
+
+        // Gun following the player
+        _targetPos = new Vector2(_target.position.x + xOffset, _target.position.y + yOffset);
+        if (_canFollowTarget)
+            transform.position = Vector2.Lerp(transform.position, _targetPos, followSpeed);
+
+        _previousGunDir = _gunDirection;
     }
     #endregion
 
     #region Functions
+    // Event listener OnShoot
     public void ShootRecoil(Vector2 dir) => StartCoroutine(ShootRecoilCoroutine());
+
+    // Event listener OnHideGun
     public void HideGun(bool isHide)
     {
         // Put the gun at the right position and activate
@@ -79,12 +114,20 @@ public class Gun : MonoBehaviour
             sprite.color = new Color(1, 1, 1, 0);
     }
 
+    // Event listener OnFlipSprite
     public void FlipSprite(bool flip)
     {
         if (flip)
-            xOffset = _nXOffset;
-        else
-            xOffset = Mathf.Abs(xOffset);
+        {
+            xOffset = -_defaultXOffset;
+            _previousXOffset = xOffset;
+            sprite.flipY = true;
+            return;
+        }
+
+        xOffset = _defaultXOffset;
+        _previousXOffset = xOffset;
+        sprite.flipY = false;
     }
     #endregion
 
