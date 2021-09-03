@@ -7868,6 +7868,10 @@ PrefabInstance:
       propertyPath: yOffset
       value: 0.06
       objectReference: {fileID: 0}
+    - target: {fileID: 6125581141354661778, guid: 7952a4f2139a76a4eab8eb86c23eaba9, type: 3}
+      propertyPath: aimSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6125581141354661779, guid: 7952a4f2139a76a4eab8eb86c23eaba9, type: 3}
       propertyPath: m_RootOrder
       value: 4

@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     [Header("PROPERTIES")]
     [SerializeField] [Range(0f, 2f)] float recoilAmount = 1f;
     [SerializeField] [Range(0.1f, 1f)] float followSpeed = 0.2f;
+    [SerializeField] [Range(0.01f, 1f)] float aimSpeed = 0.2f;
     [SerializeField] [Range(-1f, 1f)] float xOffset = 0.5f;
     [SerializeField] [Range(-0.5f, 0.5f)] float yOffset = 0.06f;
     [SerializeField] [Range(1f, 20f)] float speedRecoil = 15f;
@@ -32,6 +33,7 @@ public class Gun : MonoBehaviour
     float _aimAngle;
     float _xRecoil;
     float _yRecoil;
+    float _defaultAimSpeed;
 
     Player player;
     Color _defaultColor;
@@ -46,6 +48,7 @@ public class Gun : MonoBehaviour
         _defaultXOffset = xOffset;
         _defaultColor = sprite.color;
         _previousXOffset = _defaultXOffset;
+        _defaultAimSpeed = aimSpeed;
     }
 
     private void Update()
@@ -53,8 +56,9 @@ public class Gun : MonoBehaviour
         if (GameManager.isGamePaused)
             return;
 
-        // Gun rotate with the right stick
+        // Initialize values
         _gunDirection = input.GetGunDirection();
+        bool previousFlip = sprite.flipX;
 
         // Calculate aim angle and sprite flipping
         if (!sprite.flipY)
@@ -78,7 +82,13 @@ public class Gun : MonoBehaviour
                 sprite.flipX = false;
         }
 
-        transform.rotation = Quaternion.AngleAxis(_aimAngle, Vector3.forward);
+        // If changing side, do not lerp
+        if (previousFlip != sprite.flipX)
+            aimSpeed = 1;
+
+        // Lerps the angle
+        Quaternion goalAngle = Quaternion.AngleAxis(_aimAngle, Vector3.forward);
+        transform.rotation = Quaternion.Lerp(transform.rotation, goalAngle, aimSpeed);
 
         // Change the offset of the gun when the player is against a wall to prevent shooting in a wall
         if (player.IsAgainstWallLeft && sprite.flipY)
@@ -93,7 +103,9 @@ public class Gun : MonoBehaviour
         if (_canFollowTarget)
             transform.position = Vector2.Lerp(transform.position, _targetPos, followSpeed);
 
+        // Reset values
         _previousGunDir = _gunDirection;
+        aimSpeed = _defaultAimSpeed;
     }
     #endregion
 
