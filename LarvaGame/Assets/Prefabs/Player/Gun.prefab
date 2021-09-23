@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 1436053651}
   - component: {fileID: 1436053650}
   - component: {fileID: 1436053652}
+  - component: {fileID: 2038300993}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -297,6 +298,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: ShootRecoil
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2038300993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125581141354661777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e4e0363e2336b4fb7e0fdf43781cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notifier: {fileID: 11400000, guid: 45556e811601acb439532795d133e33f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6125581141354661777}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

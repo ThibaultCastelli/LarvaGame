@@ -7,13 +7,17 @@ using ObserverTC;
 public class TriggerOut : MonoBehaviour
 {
     [SerializeField] NotifierInt loadSceneEvent;
+    [SerializeField] Notifier killPlayerEvent;
     [SerializeField] bool showShape = true;
+
+    bool _hasTriggerExit;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Prevent from moving or shooting
         if (collision.tag == "Player")
         {
+
             Player player = collision.GetComponent<Player>();
             player.SetState(player.DeathState);
         }
@@ -22,8 +26,10 @@ public class TriggerOut : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Load next level when player is out of screen
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !_hasTriggerExit)
         {
+            _hasTriggerExit = true;
+            killPlayerEvent.Notify();
             loadSceneEvent.Notify(SceneController.GetActiveScene() + 1);
         }
     }

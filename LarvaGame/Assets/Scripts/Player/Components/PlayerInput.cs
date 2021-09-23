@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
     InputControlScheme _keyboardControl;
     InputControlScheme _currentControl;
 
-    private void Awake()
+    void Awake()
     {
         // Enable the input controls
         Controls = new PlayerControls();

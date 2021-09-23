@@ -75,11 +75,11 @@ public class GroundState : IState
     {
         if (player.CurrentAmmos > 0)
         {
-            audio.OnShootAudio.Play(audio.ShootAudioSource);
+            audio.OnShootGroundSFX.Play();
             player.ShootRecoil();
         }
         else
-            audio.OnEmptyShootAudio.Play(audio.EmptyShootAudioSource);
+            audio.OnEmptyShootSFX.Play();
     }
 
     /*void HideGun(InputAction.CallbackContext ctx)

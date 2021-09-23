@@ -223,6 +223,12 @@ namespace EasingTC
                 PlayAnimation();
         }
 
+        private void OnEnable()
+        {
+            if (playOnAwake)
+                PlayAnimation();
+        }
+
         private void Update()
         {
             // Replay automatically the animation if loop is selected on the editor

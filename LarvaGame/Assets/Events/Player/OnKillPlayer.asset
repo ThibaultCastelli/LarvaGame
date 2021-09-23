@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0df8100c46ca24fbdb03fc531216d3, type: 3}
   m_Name: OnKillPlayer
   m_EditorClassIdentifier: 
-  description: 
+  description: Used to kill the player and trigger the scene transition animation.

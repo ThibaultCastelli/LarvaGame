@@ -19,6 +19,9 @@ public class PlayerVisual : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.isGamePaused)
+            return;
+
         _gunDirection = input.GetGunDirection();
         _movementDir = input.GetMovementX();
 

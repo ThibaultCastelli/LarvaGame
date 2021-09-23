@@ -32,7 +32,7 @@ namespace EasingTC
             {
                 if (!TryGetComponent<Image>(out image))
                 {
-                    Debug.LogError("ERROR : Can't find the renderer or the image on this gameobject.");
+                    Debug.LogError("ERROR : Can't find the renderer or the image on this gameobject.\nLocation : " + this.gameObject.name);
                     return;
                 }
                 else
@@ -50,7 +50,7 @@ namespace EasingTC
             // Select which special ease function will be used
             if (animationType == AnimationType.SpecialEase)
             {
-                Debug.LogError("ERROR : Can't change the color with specials ease.");
+                Debug.LogError("ERROR : Can't change the color with specials ease.\nLocation : " + this.gameObject.name);
                 animationToPlay = NullAnimation;
             }
         }

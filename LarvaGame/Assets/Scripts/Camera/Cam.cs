@@ -214,7 +214,7 @@ public class Cam : MonoBehaviour
     }
     #endregion
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (showLookDistance)
         {

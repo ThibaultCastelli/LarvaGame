@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686efdaea1edf8940b8ea292d675ecbc, type: 3}
+  m_Name: OnShootGroundSFX
+  m_EditorClassIdentifier: 
+  description: 
+  clips:
+  - {fileID: 8300000, guid: bfd5696f9b12e4e4db3461c3abb1dfc1, type: 3}
+  - {fileID: 8300000, guid: 8ad6f108893219841bdb7bb4360c040e, type: 3}
+  mixerGroup: {fileID: 0}
+  playOnAwake: 0
+  loop: 0
+  mute: 0
+  bypassEffects: 0
+  bypassReverbZones: 0
+  multiplePlay: 1
+  priority: 128
+  useRandomVolume: 0
+  volume: 1
+  randomVolume:
+    minValue: 0
+    maxValue: 0
+  useRandomPan: 0
+  pan: 0
+  randomPan:
+    minValue: 0
+    maxValue: 0
+  useRandomPitch: 0
+  pitch: 1
+  randomPitch:
+    minValue: 0
+    maxValue: 0
+  useRandomReverbZoneMix: 0
+  reverbZoneMix: 1
+  randomReverbZoneMix:
+    minValue: 0
+    maxValue: 0
+  source: {fileID: 0}

@@ -33,7 +33,7 @@ namespace EasingTC
             {
                 if (!TryGetComponent<Text>(out text))
                 {
-                    Debug.LogError("ERROR : Can't find the TextMeshPro or the Text on this gameobject.");
+                    Debug.LogError("ERROR : Can't find the TextMeshPro or the Text on this gameobject.\nLocation : " + this.gameObject.name);
                     return;
                 }
                 else
@@ -51,7 +51,7 @@ namespace EasingTC
             // Select which special ease function will be used
             if (animationType == AnimationType.SpecialEase)
             {
-                Debug.LogError("ERROR : Can't change the color with specials ease.");
+                Debug.LogError("ERROR : Can't change the color with specials ease.\nLocation : " + this.gameObject.name);
                 animationToPlay = NullAnimation;
             }
         }

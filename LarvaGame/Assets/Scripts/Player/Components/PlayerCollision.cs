@@ -4,10 +4,6 @@ using ObserverTC;
 public class PlayerCollision : MonoBehaviour
 {
     #region Variables
-    [Header("COMPONENT")]
-    [SerializeField] Player player;
-    [Space]
-
     [Header("LAYERS")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask plateformCheckLayer;
@@ -16,9 +12,16 @@ public class PlayerCollision : MonoBehaviour
     [Header("EVENTS")]
     [SerializeField] NotifierGameObject collectAmmoEvent;
 
+    Player player;
+
     Coroutine _deathCoroutine;
     Collider2D lastAmmoTouched;
     #endregion
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

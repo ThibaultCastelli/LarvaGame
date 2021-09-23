@@ -33,10 +33,7 @@ public class Player : StateMachine
     [Space]
 
     [Header("COMPONENTS")]
-    [SerializeField] Rigidbody2D playerRB;
     [SerializeField] PlayerVisual playerVisual;
-    [SerializeField] PlayerInput playerInput;
-    [SerializeField] PlayerCollision playerCollision;
     [SerializeField] PlayerAudio playerAudio;
     [Space]
 
@@ -63,6 +60,11 @@ public class Player : StateMachine
     #endregion
 
     #region Variables
+    // Components
+    Rigidbody2D playerRB;
+    PlayerCollision playerCollision;
+    PlayerInput playerInput;
+
     // States
     public IState GroundState { get; private set; }
     public IState AirState { get; private set; }
@@ -93,7 +95,7 @@ public class Player : StateMachine
 
     // Shoot
     public float PreviousShootPower { get; private set; }
-    bool _gunInHand = true;
+    //bool _gunInHand = true;
     #endregion
 
     #region Getters
@@ -115,6 +117,11 @@ public class Player : StateMachine
     #region Starts & Updates
     private void Awake()
     {
+        // Instantiate components
+        playerRB = GetComponent<Rigidbody2D>();
+        playerCollision = GetComponent<PlayerCollision>();
+        playerInput = GetComponent<PlayerInput>();
+
         // Instantiate states
         GroundState = new GroundState(this, playerRB, playerInput, playerCollision, playerAudio);
         AirState = new OnAirState(this, playerRB, playerInput, playerCollision, playerAudio);

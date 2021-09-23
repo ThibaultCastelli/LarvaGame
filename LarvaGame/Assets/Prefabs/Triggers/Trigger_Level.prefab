@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSceneEvent: {fileID: 11400000, guid: 45556e811601acb439532795d133e33f, type: 2}
+  killPlayerEvent: {fileID: 11400000, guid: 664a1f0cb45d6af47bf4a3bda2426368, type: 2}
   showShape: 1

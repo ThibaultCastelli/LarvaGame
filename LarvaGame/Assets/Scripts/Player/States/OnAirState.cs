@@ -93,11 +93,11 @@ public class OnAirState : IState
     {
         if (player.CurrentAmmos > 0)
         {
-            audio.OnShootAirAudio.Play(audio.ShootAudioSource);
+            audio.OnShootAirSFX.Play();
             player.ShootFreeze();
         }
         else
-            audio.OnEmptyShootAudio.Play(audio.EmptyShootAudioSource);
+            audio.OnEmptyShootSFX.Play();
     }
 
     void Pause(InputAction.CallbackContext ctx)

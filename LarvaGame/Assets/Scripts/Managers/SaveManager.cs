@@ -10,9 +10,11 @@ public class SaveManager : MonoBehaviour
     #region Variables
     [SerializeField] NotifierInt loadSceneEvent;
 
-    GameObject _collectible;
-
     public Save currentSave { get; private set; }
+
+    static SaveManager _instance;
+
+    GameObject _collectible;
 
     string _savePath;
     bool _isLarvaAlreadyCollected;
@@ -21,6 +23,15 @@ public class SaveManager : MonoBehaviour
     #region Starts & Updates
     private void Awake()
     {
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
         _savePath = Application.persistentDataPath + "/gamesave.save";
         currentSave = GetSave();
 
