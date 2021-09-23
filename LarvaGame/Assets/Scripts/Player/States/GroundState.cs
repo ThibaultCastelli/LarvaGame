@@ -82,12 +82,12 @@ public class GroundState : IState
             audio.OnEmptyShootAudio.Play(audio.EmptyShootAudioSource);
     }
 
-    void HideGun(InputAction.CallbackContext ctx)
+    /*void HideGun(InputAction.CallbackContext ctx)
     {
         // Play sound
         player.HideGun();
         player.SetState(player.NoGunState);
-    }
+    }*/
 
     void Pause(InputAction.CallbackContext ctx)
     {

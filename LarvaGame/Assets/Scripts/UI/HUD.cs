@@ -10,8 +10,10 @@ public class HUD : MonoBehaviour
     #endregion
 
     #region Functions
-    public void UpdateAmmo(Player player)
+    public void UpdateAmmo(GameObject playerGO)
     {
+        Player player = playerGO.GetComponent<Player>();
+
         // Show the ammos the player can shoot
         switch (player.CurrentAmmos)
         {

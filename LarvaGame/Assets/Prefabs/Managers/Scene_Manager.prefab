@@ -118,8 +118,8 @@ GameObject:
   m_Component:
   - component: {fileID: 587876766938033193}
   - component: {fileID: 587876766938033195}
-  - component: {fileID: 587876766938033192}
-  - component: {fileID: 1645545166}
+  - component: {fileID: 709538125}
+  - component: {fileID: 709538126}
   m_Layer: 0
   m_Name: Scene_Manager
   m_TagString: Untagged
@@ -157,8 +157,8 @@ MonoBehaviour:
   transitionLevelAnimator: {fileID: 3914923116202377299}
   transitionDeathAnimator: {fileID: 828147021}
   transitionTime: 1
-  save: {fileID: 257853624990411143, guid: 3b45a11dfed5e324e95cc03ff5e05dee, type: 3}
---- !u!114 &587876766938033192
+  save: {fileID: 0}
+--- !u!114 &709538125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,17 +167,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 587876766938033198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e731b3cbc045b48bc10cb58434d895, type: 3}
+  m_Script: {fileID: 11500000, guid: a4ee65cfc8d436e4692749384418b4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: d65a3bc0c57519243a95b0b916ba74d1, type: 2}
-  responseInt:
+  notifier: {fileID: 11400000, guid: 26b5be9e65c1471479087f8ae0629d48, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 587876766938033195}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 0
+        m_MethodName: ReloadScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -186,7 +186,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1645545166
+--- !u!114 &709538126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,17 +195,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 587876766938033198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a75b3a5f5307ea4ebb52cc7a0a6ee40, type: 3}
+  m_Script: {fileID: 11500000, guid: e6e4e0363e2336b4fb7e0fdf43781cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: cfa2e86c0fc1cd94ba559207a80a3819, type: 2}
+  notifier: {fileID: 11400000, guid: 45556e811601acb439532795d133e33f, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 587876766938033195}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: ReloadScene
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

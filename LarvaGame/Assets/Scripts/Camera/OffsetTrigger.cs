@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObserverTC;
 
 public class OffsetTrigger : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class OffsetTrigger : MonoBehaviour
     [Space]
 
     [Header("EVENTS")]
-    [SerializeField] EventVector2 changeOffsetEvent;
-    [SerializeField] EventFloat changeOrtographicEvent;
+    [SerializeField] NotifierVector2 changeOffsetEvent;
+    [SerializeField] NotifierFloat changeOrtographicEvent;
     [Space]
 
     [Header("INFOS")]
@@ -69,13 +70,13 @@ public class OffsetTrigger : MonoBehaviour
         // Set new or previous values
         if (_hasChange)
         {
-            changeOffsetEvent.Raise(new Vector2(_previousXOffset, _previousYOffset));
-            changeOrtographicEvent.Raise(_previousOrtographicSize);
+            changeOffsetEvent.Notify(new Vector2(_previousXOffset, _previousYOffset));
+            changeOrtographicEvent.Notify(_previousOrtographicSize);
         }
         else
         {
-            changeOffsetEvent.Raise(new Vector2(newXOffset, newYOffset));
-            changeOrtographicEvent.Raise(newOrtographicSize);
+            changeOffsetEvent.Notify(new Vector2(newXOffset, newYOffset));
+            changeOrtographicEvent.Notify(newOrtographicSize);
         }
 
         // Wait for the player to go out of the trigger

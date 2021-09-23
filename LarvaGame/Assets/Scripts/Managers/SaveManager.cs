@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using ObserverTC;
 
 public class SaveManager : MonoBehaviour
 {
     #region Variables
-    [SerializeField] EventInt loadSceneEvent;
+    [SerializeField] NotifierInt loadSceneEvent;
 
     GameObject _collectible;
 
@@ -49,10 +50,10 @@ public class SaveManager : MonoBehaviour
     public void NewGame()
     {
         File.Delete(_savePath);
-        loadSceneEvent.Raise(1);
+        loadSceneEvent.Notify(1);
     }
 
-    public void LoadSave() => loadSceneEvent.Raise(currentSave.currentLevel);
+    public void LoadSave() => loadSceneEvent.Notify(currentSave.currentLevel);
 
     public void SaveLevel(int sceneIndex)
     {

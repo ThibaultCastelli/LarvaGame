@@ -70,5 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a889100bb15cb44495fa48d8e0437f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEvent: {fileID: 11400000, guid: cfa2e86c0fc1cd94ba559207a80a3819, type: 2}
+  deathEvent: {fileID: 11400000, guid: 26b5be9e65c1471479087f8ae0629d48, type: 2}
   showShape: 1

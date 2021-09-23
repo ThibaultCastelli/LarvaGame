@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 702756063948064771}
   - component: {fileID: 702756063948064768}
   - component: {fileID: 702756063948064769}
-  - component: {fileID: 1288511129}
+  - component: {fileID: 1867381758}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -118,7 +118,7 @@ MonoBehaviour:
   ammos:
   - {fileID: 702756064458319335}
   - {fileID: 702756065165498947}
---- !u!114 &1288511129
+--- !u!114 &1867381758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,11 +127,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 702756063948064782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c547784c57aac8342aaa43be7716c127, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a007defa9df67c44a4ef8eb33849d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 4d2269ac4b8b84348aead448270fd5cc, type: 2}
-  responsePlayer:
+  notifier: {fileID: 11400000, guid: 2b9819a560119084bb62a419608234e2, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 702756063948064769}

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using ObserverTC;
 
 enum EnterDirection
 {
@@ -55,10 +56,10 @@ public class Player : StateMachine
     [Space]
 
     [Header("EVENTS")]
-    [SerializeField] EventVector2 shootEvent;
-    [SerializeField] EventPlayer ammoChangeEvent;
-    [SerializeField] EventBool hideGunEvent;
-    [SerializeField] Event deathEvent;
+    [SerializeField] NotifierVector2 shootEvent;
+    [SerializeField] NotifierGameObject ammoChangeEvent;
+    //[SerializeField] EventBool hideGunEvent;
+    [SerializeField] Notifier deathEvent;
     #endregion
 
     #region Variables
@@ -201,13 +202,13 @@ public class Player : StateMachine
 
         // Update ammo count and raise shoot event
         CurrentAmmos--;
-        shootEvent.Raise(bulletDirection);
-        ammoChangeEvent.Raise(this);
+        shootEvent.Notify(bulletDirection);
+        ammoChangeEvent.Notify(this.gameObject);
     }
 
     public void ShootFreeze() => StartCoroutine(ShootFreezeCoroutine());
     public void ReloadAmmos() => StartCoroutine(ReloadAmmosCoroutine());
-    public void HideGun() => hideGunEvent.Raise(_gunInHand = !_gunInHand);
+    //public void HideGun() => hideGunEvent.Raise(_gunInHand = !_gunInHand);
     public void ClimbPlateform(Collider2D plateformCollider, bool goToLeft) => StartCoroutine(ClimbPlateformCoroutine(plateformCollider, goToLeft));
     #endregion
 
@@ -215,7 +216,7 @@ public class Player : StateMachine
     public void CollectAmmo(GameObject ammo)
     {
         CurrentAmmos++;
-        ammoChangeEvent.Raise(this);
+        ammoChangeEvent.Notify(this.gameObject);
     }
 
     public void Death()
@@ -280,7 +281,7 @@ public class Player : StateMachine
         yield return new WaitForSeconds(timeToReloadAmmos);
 
         CurrentAmmos = DefaultAmmoCount;
-        ammoChangeEvent.Raise(this);
+        ammoChangeEvent.Notify(this.gameObject);
 
         IsReloadingAmmos = false;
     }
@@ -339,7 +340,7 @@ public class Player : StateMachine
         yield return new WaitForSeconds(timeToTriggerDeath);
         while (GameManager.isGamePaused)
             yield return null;
-        deathEvent.Raise();
+        deathEvent.Notify();
     }
     #endregion
 }

@@ -207,8 +207,8 @@ MonoBehaviour:
   continueButton: {fileID: 7777155222863851260}
   newGameButton: {fileID: 3456586222948885456}
   eventSystem: {fileID: 0}
-  loadSaveEvent: {fileID: 11400000, guid: 3a1d876a9fd98ef469f1078dec9340a2, type: 2}
-  newGameEvent: {fileID: 11400000, guid: cde069236e71abf48a8f0a213ebe509a, type: 2}
+  loadSaveEvent: {fileID: 11400000, guid: 671d07d52636fc34e9f61600ae64a8c7, type: 2}
+  newGameEvent: {fileID: 11400000, guid: f8269d925ef729342979d7fd2fb19730, type: 2}
 --- !u!1 &3456586223334815610
 GameObject:
   m_ObjectHideFlags: 0

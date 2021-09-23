@@ -73,7 +73,7 @@ MonoBehaviour:
   newXOffset: 0
   newYOffset: 0
   newOrtographicSize: 3.5
+  changeOffsetEvent: {fileID: 11400000, guid: 49e71844477bc8a409a04f31134d8ed5, type: 2}
+  changeOrtographicEvent: {fileID: 11400000, guid: 4941a7c4c39ffbe4695c63e0457ee924, type: 2}
   timeOfTransition: 0.5
-  changeOffsetEvent: {fileID: 11400000, guid: 1ccf79fb5cb7d1c4f93fe88293594e80, type: 2}
-  changeOrtographicEvent: {fileID: 11400000, guid: 06993504d4f44de47951c96fd4e8eaaf, type: 2}
   showShape: 1

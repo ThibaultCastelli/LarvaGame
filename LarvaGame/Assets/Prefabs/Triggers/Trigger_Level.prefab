@@ -122,6 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b46e779c0413841a7f2218154652df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneEvent: {fileID: 11400000, guid: d65a3bc0c57519243a95b0b916ba74d1, type: 2}
-  timeOfTransition: 0.5
+  loadSceneEvent: {fileID: 11400000, guid: 45556e811601acb439532795d133e33f, type: 2}
   showShape: 1

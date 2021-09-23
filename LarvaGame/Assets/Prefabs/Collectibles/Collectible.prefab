@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedFollow: 0.1
   timeToCollect: 0.5
-  larvaCollectedEvent: {fileID: 11400000, guid: 8af1ce91ea46760419b368d6b83c713e, type: 2}
+  larvaCollectedEvent: {fileID: 11400000, guid: 43a415dd532bf5543b1df75161045e8c, type: 2}

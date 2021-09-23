@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using ObserverTC;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class PauseMenu : MonoBehaviour
     [Space]
 
     [Header("EVENTS")]
-    [SerializeField] Event killPlayerEvent;
-    [SerializeField] EventInt loadSceneEvent;
+    [SerializeField] Notifier killPlayerEvent;
+    [SerializeField] NotifierInt loadSceneEvent;
     #endregion
 
     #region Starts & Updates
@@ -55,12 +56,12 @@ public class PauseMenu : MonoBehaviour
     public void Retry()
     {
         Continue();
-        killPlayerEvent.Raise();
+        killPlayerEvent.Notify();
     }
 
     public void SaveAndQuit()
     {
-        loadSceneEvent.Raise(0);
+        loadSceneEvent.Notify(0);
     }
     #endregion
 

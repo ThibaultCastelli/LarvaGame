@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ObserverTC;
 
 public class TriggerOut : MonoBehaviour
 {
-    [SerializeField] EventInt loadSceneEvent;
+    [SerializeField] NotifierInt loadSceneEvent;
     [SerializeField] bool showShape = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,7 +24,7 @@ public class TriggerOut : MonoBehaviour
         // Load next level when player is out of screen
         if (collision.tag == "Player")
         {
-            loadSceneEvent.Raise(SceneController.GetActiveScene() + 1);
+            loadSceneEvent.Notify(SceneController.GetActiveScene() + 1);
         }
     }
 

@@ -19,14 +19,14 @@ public class NoGunState : IState
     #region Starts & Updates
     public void OnEnter()
     {
-        playerInput.Controls.Player.HideGun.started += TakeGun;
+        //playerInput.Controls.Player.HideGun.started += TakeGun;
         playerInput.Controls.Player.Pause.started += Pause;
 
     }
 
     public void OnExit()
     {
-        playerInput.Controls.Player.HideGun.started -= TakeGun;
+        //playerInput.Controls.Player.HideGun.started -= TakeGun;
         playerInput.Controls.Player.Pause.started -= Pause;
     }
 
@@ -48,12 +48,12 @@ public class NoGunState : IState
     #endregion
 
     #region Functions
-    void TakeGun(InputAction.CallbackContext ctx)
+    /*void TakeGun(InputAction.CallbackContext ctx)
     {
         // Play sound
         player.HideGun();
         player.SetState(player.GroundState);
-    }
+    }*/
 
     void Pause(InputAction.CallbackContext ctx)
     {

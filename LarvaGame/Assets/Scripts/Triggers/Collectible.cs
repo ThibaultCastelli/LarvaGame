@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObserverTC;
 
 public class Collectible : MonoBehaviour
 {
     #region Variables
     [SerializeField] [Range(0.01f, 0.2f)] float speedFollow = 0.05f;
     [SerializeField] [Range(0f, 4f)] float timeToCollect = 1f;
-    [SerializeField] Event larvaCollectedEvent;
+    [SerializeField] Notifier larvaCollectedEvent;
 
     bool _isCollected = false;
     bool _isInTrigger = false;
@@ -58,7 +59,7 @@ public class Collectible : MonoBehaviour
     {
         // Add the collectible once player spend some times on the ground and save
         yield return new WaitForSeconds(timeToCollect);
-        larvaCollectedEvent.Raise();
+        larvaCollectedEvent.Notify();
         Destroy(this.gameObject);
     }
     #endregion

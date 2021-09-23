@@ -76,8 +76,8 @@ MonoBehaviour:
   canvas: {fileID: 1183357031488918259}
   mainMenu: {fileID: 1183357031960285709}
   optionsMenu: {fileID: 1183357030163613847}
-  killPlayerEvent: {fileID: 11400000, guid: 18fdd52bb1d2fc646be09277b527780e, type: 2}
-  loadSceneEvent: {fileID: 11400000, guid: d65a3bc0c57519243a95b0b916ba74d1, type: 2}
+  killPlayerEvent: {fileID: 11400000, guid: 664a1f0cb45d6af47bf4a3bda2426368, type: 2}
+  loadSceneEvent: {fileID: 11400000, guid: 45556e811601acb439532795d133e33f, type: 2}
 --- !u!1 &1183357030701231831
 GameObject:
   m_ObjectHideFlags: 0

@@ -129,12 +129,12 @@ MonoBehaviour:
   rightBound: 0
   topBound: 0
   bottomBound: 0
-  changeOffsetEvent: {fileID: 11400000, guid: 1ccf79fb5cb7d1c4f93fe88293594e80, type: 2}
-  changeOrtographicEvent: {fileID: 11400000, guid: 06993504d4f44de47951c96fd4e8eaaf, type: 2}
-  changeBoundariesEvent: {fileID: 11400000, guid: 78a444cd7ed07804f9ede21e84d37b09, type: 2}
-  savePosEvent: {fileID: 11400000, guid: dac34450aa4644248990eedfa90ea7cb, type: 2}
-  saveCamPosEvent: {fileID: 11400000, guid: b3a4f928ad007a54d82002a42825f070, type: 2}
-  saveCheckpointEvent: {fileID: 11400000, guid: 6dee0eeeba14f3345b7d4b9775bbdc63, type: 2}
+  changeOffsetEvent: {fileID: 11400000, guid: 49e71844477bc8a409a04f31134d8ed5, type: 2}
+  changeOrthographicEvent: {fileID: 11400000, guid: 4941a7c4c39ffbe4695c63e0457ee924, type: 2}
+  changeBoundariesEvent: {fileID: 11400000, guid: ab6ae7e5b5a32184ab73e5e979249475, type: 2}
+  savePosEvent: {fileID: 11400000, guid: a4dbb37c67a897e4da5cafe01f78ffaf, type: 2}
+  saveCamPosEvent: {fileID: 11400000, guid: 36d7bfe87674f7c47bee5ba70f8f65fb, type: 2}
+  saveCheckpointEvent: {fileID: 11400000, guid: 00f37aec0fa4cb944a69c9ff40baedb5, type: 2}
   previousTrigger: {fileID: 0}
   timeOfTransition: 0.5
   showShape: 1

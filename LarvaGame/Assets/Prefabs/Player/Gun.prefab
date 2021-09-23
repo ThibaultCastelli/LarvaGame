@@ -123,10 +123,9 @@ GameObject:
   - component: {fileID: 6125581141354661779}
   - component: {fileID: 6125581141354661776}
   - component: {fileID: 6125581141354661778}
-  - component: {fileID: 651538207}
-  - component: {fileID: 1925981274}
-  - component: {fileID: 2071726969}
-  - component: {fileID: 287410613}
+  - component: {fileID: 1436053651}
+  - component: {fileID: 1436053650}
+  - component: {fileID: 1436053652}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -190,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 40
-  m_Sprite: {fileID: 21300000, guid: c76c6456f2063dd499433af6f0f9af40, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40d73218581166b469eac2fa46f77389, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -215,12 +214,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recoilAmount: 0.3
   followSpeed: 0.5
-  xOffset: 0.3
+  aimSpeed: 0.3
+  xOffset: 0.15
+  yOffset: 0.06
   speedRecoil: 13
   _target: {fileID: 0}
   sprite: {fileID: 6125581141354661776}
   input: {fileID: 0}
---- !u!114 &651538207
+--- !u!114 &1436053651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,10 +230,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 6125581141354661777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a75b3a5f5307ea4ebb52cc7a0a6ee40, type: 3}
+  m_Script: {fileID: 11500000, guid: d11a2c8471901a048b5e0b7dc5d586aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: cfa2e86c0fc1cd94ba559207a80a3819, type: 2}
+  notifier: {fileID: 11400000, guid: b75dbbd2dde3e5040ac2ec68850fb264, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6125581141354661778}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: FlipSprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1436053650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125581141354661777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ee65cfc8d436e4692749384418b4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notifier: {fileID: 11400000, guid: 26b5be9e65c1471479087f8ae0629d48, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -248,7 +277,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1925981274
+--- !u!114 &1436053652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,72 +286,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6125581141354661777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9639a42a4415c5147a7f4d04119e14a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 105abe4a40df9c547945edbf5fbfe0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5bdba0225096a6d42938e5c5bad0da2b, type: 2}
-  responseBool:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6125581141354661778}
-        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
-        m_MethodName: HideGun
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2071726969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6125581141354661777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fd88c646e2c8f341b76441fbd537b01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: aae5441fd020d24438043b883e472879, type: 2}
-  responsePlayer:
+  notifier: {fileID: 11400000, guid: bf7a9429f443b30469c255ad8b1a3bef, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6125581141354661778}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: ShootRecoil
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &287410613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6125581141354661777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9639a42a4415c5147a7f4d04119e14a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a1053835b8333c44c87123b7fd1b3e5c, type: 2}
-  responseBool:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6125581141354661778}
-        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
-        m_MethodName: FlipSprite
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

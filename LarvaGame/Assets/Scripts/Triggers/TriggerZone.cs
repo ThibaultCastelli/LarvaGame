@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObserverTC;
 
 public class TriggerZone : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class TriggerZone : MonoBehaviour
     [Space]
 
     [Header("EVENTS")]
-    [SerializeField] EventVector2 changeOffsetEvent;
-    [SerializeField] EventFloat changeOrtographicEvent;
-    [SerializeField] EventFloat4 changeBoundariesEvent;
-    [SerializeField] EventVector2 savePosEvent;
-    [SerializeField] EventVector2 saveCamPosEvent;
-    [SerializeField] Event saveCheckpointEvent;
+    [SerializeField] NotifierVector2 changeOffsetEvent;
+    [SerializeField] NotifierFloat changeOrthographicEvent;
+    [SerializeField] NotifierFloat4 changeBoundariesEvent;
+    [SerializeField] NotifierVector2 savePosEvent;
+    [SerializeField] NotifierVector2 saveCamPosEvent;
+    [SerializeField] Notifier saveCheckpointEvent;
     [Space]
 
     [Header("INFOS")]
@@ -100,15 +101,15 @@ public class TriggerZone : MonoBehaviour
         // Set new or previous values
         if (!_hasChange)
         {
-            changeOffsetEvent.Raise(new Vector2(newXOffset, newYOffset));
-            changeOrtographicEvent.Raise(newOrthographicSize);
-            changeBoundariesEvent.Raise(leftBound, rightBound, topBound, bottomBound);
+            changeOffsetEvent.Notify(new Vector2(newXOffset, newYOffset));
+            changeOrthographicEvent.Notify(newOrthographicSize);
+            changeBoundariesEvent.Notify(leftBound, rightBound, topBound, bottomBound);
         }
         else
         {
-            changeOffsetEvent.Raise(new Vector2(_previousXOffset, _previousYOffset));
-            changeOrtographicEvent.Raise(_previousOrtographicSize);
-            changeBoundariesEvent.Raise(_previousLeftBound, _previousRightBound, _previousTopBound, _previousBottomBound);
+            changeOffsetEvent.Notify(new Vector2(_previousXOffset, _previousYOffset));
+            changeOrthographicEvent.Notify(_previousOrtographicSize);
+            changeBoundariesEvent.Notify(_previousLeftBound, _previousRightBound, _previousTopBound, _previousBottomBound);
         }
 
         // Wait for the player to go out of the trigger
@@ -122,9 +123,9 @@ public class TriggerZone : MonoBehaviour
 
         // Reset movement and save positions
         player.SetState(player.AirState);
-        savePosEvent.Raise(new Vector2(player.transform.position.x, player.transform.position.y));
-        saveCamPosEvent.Raise(new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y));
-        saveCheckpointEvent.Raise();
+        savePosEvent.Notify(new Vector2(player.transform.position.x, player.transform.position.y));
+        saveCamPosEvent.Notify(new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y));
+        saveCheckpointEvent.Notify();
 
         _hasChange = !_hasChange;
         _isInTransition = false;

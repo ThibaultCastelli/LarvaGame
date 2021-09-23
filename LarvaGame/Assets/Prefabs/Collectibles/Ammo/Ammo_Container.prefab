@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6206728661562555532}
   - component: {fileID: 6206728661562555533}
-  - component: {fileID: 163266802}
+  - component: {fileID: -4223021156624956320}
   m_Layer: 0
   m_Name: Ammo_Container
   m_TagString: Untagged
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToRespawn: 1
---- !u!114 &163266802
+--- !u!114 &-4223021156624956320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,11 +54,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6206728661562555522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d760089868af9a45bf71fe66fc813bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a007defa9df67c44a4ef8eb33849d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 91fa85cb0531a1745b66d987946a1a15, type: 2}
-  responsePlayerGameObject:
+  notifier: {fileID: 11400000, guid: 226da694271d577438d9e158b0c4fd54, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6206728661562555533}

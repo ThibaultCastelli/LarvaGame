@@ -1,4 +1,5 @@
 using UnityEngine;
+using ObserverTC;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerCollision : MonoBehaviour
     [Space]
 
     [Header("EVENTS")]
-    [SerializeField] EventGameObject collectAmmoEvent;
+    [SerializeField] NotifierGameObject collectAmmoEvent;
 
     Coroutine _deathCoroutine;
     Collider2D lastAmmoTouched;
@@ -25,7 +26,7 @@ public class PlayerCollision : MonoBehaviour
         {
             case "Ammo":
                 if (player.CurrentAmmos < player.DefaultAmmoCount && collision != lastAmmoTouched)
-                    collectAmmoEvent.Raise(collision.gameObject);
+                    collectAmmoEvent.Notify(collision.gameObject);
                 lastAmmoTouched = collision;
                 break;
 

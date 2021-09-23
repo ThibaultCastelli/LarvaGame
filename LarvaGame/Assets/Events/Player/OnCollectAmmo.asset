@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dce602690238c214a828bddacc760436, type: 3}
+  m_Script: {fileID: 11500000, guid: 213d74c5a7b814c4fb37f5ac86e3cdcf, type: 3}
   m_Name: OnCollectAmmo
   m_EditorClassIdentifier: 
+  description: 

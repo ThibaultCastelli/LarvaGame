@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using ObserverTC;
 
 public class SubMenu : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class SubMenu : MonoBehaviour
     [SerializeField] EventSystem eventSystem;
 
     [Header("EVENTS")]
-    [SerializeField] Event loadSaveEvent;
-    [SerializeField] Event newGameEvent;
+    [SerializeField] Notifier loadSaveEvent;
+    [SerializeField] Notifier newGameEvent;
 
     private void OnEnable()
     {
@@ -25,12 +26,12 @@ public class SubMenu : MonoBehaviour
 
     public void NewGame()
     {
-        newGameEvent.Raise();
+        newGameEvent.Notify();
     }
 
     public void ContinueGame()
     {
-        loadSaveEvent.Raise();
+        loadSaveEvent.Notify();
     }
 
     IEnumerator SelectNewGameButton()

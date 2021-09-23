@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4691179575971753337}
   - component: {fileID: 4691179575971753338}
-  - component: {fileID: 1653589099}
+  - component: {fileID: 3942723767270308168}
+  - component: {fileID: 1458243137}
   m_Layer: 0
   m_Name: Bullets_Pool
   m_TagString: Untagged
@@ -45,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7317181822528792904, guid: 903505e276de92e4d94a66182abea86c, type: 3}
-  spawnPos: {fileID: 6125581141354661777, guid: 7952a4f2139a76a4eab8eb86c23eaba9, type: 3}
+  spawnPos: {fileID: 0}
   defaultPoolSize: 3
---- !u!114 &1653589099
+--- !u!114 &3942723767270308168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,11 +57,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 4691179575971753336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fd88c646e2c8f341b76441fbd537b01, type: 3}
+  m_Script: {fileID: 11500000, guid: 105abe4a40df9c547945edbf5fbfe0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: aae5441fd020d24438043b883e472879, type: 2}
-  responsePlayer:
+  notifier: {fileID: 11400000, guid: bf7a9429f443b30469c255ad8b1a3bef, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4691179575971753338}
+        m_TargetAssemblyTypeName: PoolManager, Assembly-CSharp
+        m_MethodName: RequestBullet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1458243137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4691179575971753336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105abe4a40df9c547945edbf5fbfe0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notifier: {fileID: 11400000, guid: bf7a9429f443b30469c255ad8b1a3bef, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4691179575971753338}

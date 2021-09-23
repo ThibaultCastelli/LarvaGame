@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObserverTC;
 
 public class PlayerVisual : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerVisual : MonoBehaviour
     [SerializeField] PlayerInput input;
 
     [Space]
-    [SerializeField] EventBool flipSpriteEvent;
+    [SerializeField] NotifierBool flipSpriteEvent;
 
     public bool FlipX { get { return sprite.flipX; } }
 
@@ -24,12 +25,12 @@ public class PlayerVisual : MonoBehaviour
         if (!sprite.flipX && (_movementDir < 0 && _gunDirection.x <= 0) || _gunDirection.x < -0.5f)
         {
             sprite.flipX = true;
-            flipSpriteEvent.Raise(true);
+            flipSpriteEvent.Notify(true);
         }
         else if (sprite.flipX && (_movementDir > 0 && _gunDirection.x >= 0) || _gunDirection.x > 0.5f)
         {
             sprite.flipX = false;
-            flipSpriteEvent.Raise(false);
+            flipSpriteEvent.Notify(false);
         }
     }
 }
