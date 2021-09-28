@@ -35,5 +35,12 @@ namespace ObserverTC
             for (int i = observers.Count - 1; i >= 0; i--)
                 observers[i].response?.Invoke(value);
         }
+
+        public void LocateObservers()
+        {
+            Debug.Log($"Notifier '{name}' :");
+            for (int i = 0; i < observers.Count; i++)
+                Debug.Log($"Location of Observer n°{i} : {observers[i].gameObject.name}");
+        }
     }
 }
